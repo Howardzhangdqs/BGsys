@@ -1,0 +1,121 @@
+:root {
+    background-color: #000;
+}
+
+body {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    background-image: url(img.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    color: #fff;
+    font-family: Consolas;
+    font-size: 50px;
+    margin: 0px;
+}
+
+.boxx {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transition-duration: 0.7s;
+    transform: translate(-50%, -50%);
+}
+
+.schedule {
+    color: #fff;
+    transition-duration: 0.7s;
+    font-size: inherit;
+    text-align: right;
+    padding: 15px;
+}
+
+.boxxx {
+    position: absolute;
+    top: 50%;
+    /*transform: translate(-50%, -50%);*/
+}
+
+.other {
+	opacity: 0.5;
+    transition-duration: 1s;
+}
+
+.sche {
+    /*position: relative;*/
+	z-index: 99999;
+}
+
+.more {
+    position: absolute;
+    top: 50%;
+    /*transform: translate(-50%, -50%);*/
+}
+
+.tool_bar {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255,255,255,1);
+	opacity: 0.7;
+    transition-duration: 1s;
+    font-size: 20px;
+}
+
+.tool_bar:hover {
+    color: rgba(255,255,255,1);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.linehead {
+    color: inherit;
+    transition-duration: 0.7s;
+    font-size: inherit;
+    text-align: right;
+}
+
+.eachline {
+    transition-duration: 0.7s;
+    font-size: inherit;
+    text-align: center;
+    color: inherit;
+	/*text-shadow: 0 0 20px #000a;*/
+}
+
+.active {
+    color: #FFF;
+}
+
+td {
+    padding: 10px;
+}
+
+.silent {
+    color: #FFF;
+}
+
+.timer {
+    font-size: 70px;
+}
+
+#timer {
+    font-size: 70px;
+}
+
+#dater {
+    font-size: 50px;
+}
+
+span {
+    padding: 10px;
+}

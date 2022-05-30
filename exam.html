@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>壁纸系统</title>
+        <script src="jquery.min.js"></script>
+        <script>
+            const MOD = 60 * 60 * 1000 * 24;
+            
+            var sup = (+new Date("2022/2/3 16:30:00")) % MOD;//(+new Date("2022/2/3 16:30:00")) % MOD;
+            var boxxx = $(".boxxx");
+            var dde = document.documentElement;
+			
+			var present_time = 99;
+            
+            formatter = function(t) {
+                if (t <= 0) return "时间到";
+                else if (t >= 3600) return "" + Math.floor(t / 3600) + "小时 " + ("" + Math.floor((t / 60) % 60)).padStart(2, "0") + "分 " + ("" + Math.floor(t % 60)).padStart(2, "0") + "秒";
+                else if (t >= 60) return "" + Math.floor((t / 60) % 60) + "分 " + (t % 60) + "秒";
+                else return "" + (t % 60) + "秒";
+            }
+            
+            var P = {
+                get h() {return dde.clientHeight},
+                get w() {return dde.clientWidth}
+            }
+			
+			loadsize = function() {
+                let temp = $("#more1");
+                temp.css("right", (boxxx.width() + 20) + "px");
+                temp.css("top", ((P.h - temp.height()) / 2) + "px");
+                //temp.css("font-size", "40px");
+			}
+			
+			var inter;
+			
+			time_display = function() {
+                now = (+ new Date()) % MOD;
+                $("#timedisplay").text(formatter(Math.floor((sup - now) / 1000)));
+			}
+            
+            window.onload = function() {
+                
+                time_management();
+                
+                let now = (+ new Date()) % MOD;
+                $("#timedisplay").text(formatter(Math.floor((sup - now) / 1000)));
+                inter = setInterval(function() {
+					time_display();
+                }, 1000);
+            }
+            
+            var on_edit = false;
+            
+            editt = function() {
+                on_edit = ! on_edit;
+                if (on_edit) {
+                    $("#more1").css("display", "block");
+                    $("#more1").css("opacity", "1");
+                } else {
+                    //$("#more1").css("display", "none");
+                    $("#more1").css("opacity", "0");
+                }
+            }
+			
+			time2str = (pt) => (("" + Math.floor(pt / 6)).padStart(2, "0") + ":" + Math.floor(pt % 6) + "0");
+			
+			switchfocus = function(pt) {
+				$(".tlist1").removeClass("tlist1");
+				$(".tlist2").removeClass("tlist2");
+				$(".tlist3").removeClass("tlist3");
+				$(".tlist4").removeClass("tlist4");
+				$(".tlist5").removeClass("tlist5");
+				$("#tlist0" + ("" + (pt - 4)).padStart(3, "0")).addClass("tlist5");
+				$("#tlist0" + ("" + (pt - 3)).padStart(3, "0")).addClass("tlist4");
+				$("#tlist0" + ("" + (pt - 2)).padStart(3, "0")).addClass("tlist3");
+				$("#tlist0" + ("" + (pt - 1)).padStart(3, "0")).addClass("tlist2");
+				$("#tlist0" + ("" + pt).padStart(3, "0")).addClass("tlist1");
+				$("#tlist0" + ("" + (pt + 1)).padStart(3, "0")).addClass("tlist2");
+				$("#tlist0" + ("" + (pt + 2)).padStart(3, "0")).addClass("tlist3");
+				$("#tlist0" + ("" + (pt + 3)).padStart(3, "0")).addClass("tlist4");
+				$("#tlist0" + ("" + (pt + 4)).padStart(3, "0")).addClass("tlist5");
+				present_time = pt;
+			}
+			
+			switchtime = function(s) {
+				if (s >= 144) s = 143;
+				if (s <= 0) s = 0;
+				console.log(s);
+				switchfocus(s);
+				sup = (+new Date("2022/2/3 " + time2str(s) + ":00")) % MOD;
+				inter = window.clearInterval(inter);
+				time_display();
+				inter = setInterval(function() {
+					time_display();
+                }, 1000);
+			}
+            
+            time_management = function() {
+				let timelist = $("#more1");
+				
+				timelist.append('<div class="sche"><div class="schedule scheduletitel" id="title0">结束时间</div></div>');
+				timelist.append('<div class="sche"><div class="schedule scheduletitel" id="addup2h" onclick="switchtime(present_time-12)">向前2小时</div></div>');
+				
+				for (let i = -10; i <= -1; i ++)
+					timelist.append('<div class="sche disnone" id="tlist0' + ("" + i).padStart(3, "0") + '"><div class="schedule" style="opacity: 0!important;">12</div></div>');
+				
+				for (let i = 0; i < 144; i ++)
+					timelist.append('<div class="sche disnone" id="tlist0' + ("" + i).padStart(3, "0") + '" onclick="switchtime(' + i + ')"><div class="schedule">' + time2str(i) + '</div></div>');
+				
+				for (let i = 144; i <= 154; i ++)
+					timelist.append('<div class="sche disnone" id="tlist0' + ("" + i).padStart(3, "0") + '"><div class="schedule" style="opacity: 0!important;">12</div></div>');
+				
+				timelist.append('<div class="sche"><div class="schedule scheduletitel" id="minus2h" onclick="switchtime(present_time+12)">向后2小时</div></div>');
+				
+				switchfocus(present_time);
+				
+				loadsize();
+			}
+        </script>
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <style>
+            .timedisplay {
+                font-size: 200%;
+                text-align: center;
+                margin: 20px;
+            }
+            
+            .schedule {
+                padding: 8px; text-align: center;transition-duration: 0.1s
+            }
+            
+            .more {transition-duration: 0.1s}
+            .scheduletitel {font-size: 40px}
+			
+			.tlist5 {opacity: 0.2!important; font-size: 22px; display: block!important}
+            .tlist4 {opacity: 0.4!important; font-size: 30px; display: block!important}
+            .tlist3 {opacity: 0.6!important; font-size: 34px; display: block!important}
+            .tlist2 {opacity: 0.8!important; font-size: 36px; display: block!important}
+            .tlist1 {opacity: 1!important;   font-size: 38px; display: block!important}
+			
+			.disnone {display: none; opacity: 0}
+			
+			#add2h {font-size: 30px}
+        </style>
+    </head>
+    <body id="b" onselectstart="return false">
+        <div class="boxx" style="width: 1500px;">
+            <div class="silent timedisplay" id="timedisplay"></div>
+        </div>
+        <div class="more" id="more1" style="font-size: 30px; opacity: 0"></div>
+        <div class="tool_bar" align="center" onselectstart="return false">
+            <a href="wallpaper.html">
+                <span href="wallpaper.html">返回</span>
+            </a>
+            <span id="editt" onclick="editt()">编辑</span>
+        </div>
+    </body>
+</html>

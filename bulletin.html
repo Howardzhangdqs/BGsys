@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>壁纸系统</title>
+        <script src="jquery.min.js"></script>
+		<script>
+			str = "";
+			str = "暂无公告";
+			window.onload = function() {
+				$("#bulletin_b").text(str);
+			}
+		</script>
+		<link rel="stylesheet" type="text/css" href="main.css">
+		<style>
+			.bulletin_b {
+				font-size: 200%;
+				text-align: center;
+				margin: 20px;
+			}
+		</style>
+    </head>
+    <body id="b">
+        <div class="boxx" style="width: 1500px;">
+            <div class="silent bulletin_b" id="bulletin_b" contenteditable="true"></div>
+        </div>
+        <div class="tool_bar" align="center" onselectstart="return false">
+			<a href="wallpaper.html">
+				<span href="wallpaper.html">返回</span>
+			</a>
+        </div>
+    </body>
+</html>

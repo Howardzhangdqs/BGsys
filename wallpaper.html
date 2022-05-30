@@ -1,0 +1,585 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>壁纸系统</title>
+        <script src="jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="main.css">
+    </head>
+    <body id="b" onselectstart="return false" onresize="console.log('Detect size changed');changesize()">
+        <div class="boxxx">
+            <div id="scheb1"><div class="schedule" id="sche1">Undef</div></div>
+            <div id="scheb2"><div class="schedule" id="sche2">Undef</div></div>
+            <div id="scheb3"><div class="schedule" id="sche3">Undef</div></div>
+            <div id="scheb4"><div class="schedule" id="sche4">Undef</div></div>
+            <div id="scheb5"><div class="schedule" id="sche5">Undef</div></div>
+            <div id="scheb6"><div class="schedule" id="sche6">Undef</div></div>
+            <div id="scheb7"><div class="schedule" id="sche7">Undef</div></div>
+            <div id="scheb8"><div class="schedule" id="sche8">Undef</div></div>
+            <div id="scheb9"><div class="schedule" id="sche9">Undef</div></div>
+        </div>
+        <div class="more" id="more1">
+            <div class="sche" id="schem11"><div class="schedule" id="schm11">语文</div></div>
+            <div class="sche" id="schem12"><div class="schedule" id="schm12">数学</div></div>
+            <div class="sche" id="schem13"><div class="schedule" id="schm13">英语</div></div>
+            <div class="sche" id="schem14"><div class="schedule" id="schm14">物理</div></div>
+            <div class="sche" id="schem15"><div class="schedule" id="schm15">化学</div></div>
+            <div class="sche" id="schem16"><div class="schedule" id="schm16">政治</div></div>
+            <div class="sche" id="schem17"><div class="schedule" id="schm17">历史</div></div>
+            <div class="sche" id="schem18"><div class="schedule" id="schm18">地理</div></div>
+            <div class="sche" id="schem19"><div class="schedule" id="schm19">生物</div></div>
+        </div>
+        <div class="more" id="more2">
+            <div class="sche" id="schem21"><div class="schedule" id="schm21">班会</div></div>
+            <div class="sche" id="schem22"><div class="schedule" id="schm22">信息</div></div>
+            <div class="sche" id="schem23"><div class="schedule" id="schm23">心理</div></div>
+            <div class="sche" id="schem24"><div class="schedule" id="schm24">体锻</div></div>
+            <div class="sche" id="schem25"><div class="schedule" id="schm25">体专</div></div>
+            <div class="sche" id="schem26"><div class="schedule" id="schm26">拓研</div></div>
+            <div class="sche" id="schem27"><div class="schedule" id="schm27">劳技</div></div>
+            <div class="sche" id="schem28"><div class="schedule" id="schm28">艺术</div></div>
+            <div class="sche" id="schem29"><div class="schedule" id="schm29">自习</div></div>
+        </div>
+        <div class="more" id="more3">
+            <div class="sche" id="schem31"><div class="schedule" id="schm31">语测</div></div>
+            <div class="sche" id="schem32"><div class="schedule" id="schm32">数测</div></div>
+            <div class="sche" id="schem33"><div class="schedule" id="schm33">英测</div></div>
+            <div class="sche" id="schem34"><div class="schedule" id="schm34">物测</div></div>
+            <div class="sche" id="schem35"><div class="schedule" id="schm35">化测</div></div>
+            <div class="sche" id="schem36" style="display:none"><div class="schedule" id="schm36">拓研</div></div>
+            <div class="sche" id="schem37" style="display:none"><div class="schedule" id="schm37">数测</div></div>
+            <div class="sche" id="schem38" style="display:none"><div class="schedule" id="schm38">劳技</div></div>
+            <div class="sche" id="schem38" style="display:none"><div class="schedule" id="schm39">艺术</div></div>
+        </div>
+        <div class="boxx" id="peo">
+            <div class="silent" style="font-size: 300%; text-align: center; display: none; margin: 20px;">安静</div>
+            <table border="0">
+                <div class="timer" style="padding:40px !important; ">
+                    <div class="eachline active" id="timer">time</div>
+                    <div class="eachline active" id="dater">time</div>
+                </div>
+                <tr class="other">
+                    <td><div class="linehead" id="work0key">值日组长：<br>清理储物柜顶：</div></td>
+                    <td><div class="eachline" id="work0">charge</div></td>
+                </tr>
+                <tr class="blackboard">
+                    <td><div class="linehead">擦黑板：</div></td>
+                    <td><div class="eachline" id="work1">blackboard</div></td>
+                </tr>
+                <tr class="other">
+                    <td><div class="linehead">整理+擦讲台：</div></td>
+                    <td><div class="eachline" id="work2">arrange</div></td>
+                </tr>
+                <tr class="other">
+                    <td><div class="linehead">扫地：</div></td>
+                    <td><div class="eachline" id="work3">sweep</div></td>
+                </tr>
+                <tr class="other">
+                    <td><div class="linehead">拖地：</div></td>
+                    <td><div class="eachline" id="work4">mop</div></td>
+                </tr>
+                <tr class="other">
+                    <td><div class="linehead">排桌椅+关窗：</div></td>
+                    <td><div class="eachline" id="work5">arrange_tables</div></td>
+                </tr>
+            </table>
+            <div style="padding:40px;"></div>
+        </div>
+        <div class="boxx" id="randpeo" style="color:#fff; font-size:100px; text-align: center; opacity: 0;">
+            <div id="randpeonum">Undefined</div>
+            <div id="randpeoname" style="color:#fff; font-size:50px;">未定义</div>
+        </div>
+        <div class="tool_bar" style="" align="center" onselectstart="return false">
+            <span id="rand" onclick="randNumber()">随机选人</span>
+            <a id="bull" class="bull" href="bulletin.html"><span href="bulletin.html">公告板</span></a>
+            <a id="exam" class="exam" href="exam.html"><span href="exam.html">考试倒计时</span></a>
+            <span id="reditt" onclick="reditt()" style="display:none">重置课程表</span>
+            <span id="editt" onclick="editt()">编辑课程表</span>
+        </div>
+        <script>
+            /*
+             **************************************************************************
+             **************************************************************************
+             ********************                                  ********************
+             ********************          4   5   4   6           ********************
+             ********************                                  ********************
+             **************************************************************************
+             **************************************************************************
+             ***********                                                    ***********
+             ***********                      _oo8oo_                       ***********
+             ***********                     o8888888o                      ***********
+             **       **                     88" . "88                      **       **
+             **   3   **                     (| -_- |)                      **   1   **
+             **       **                     0\  =  /0                      **       **
+             **   8   **                   ___/'==='\___                    **   4   **
+             **       **                 .' \\|     |// '.                  **       **
+             **   3   **                / \\|||  :  |||// \                 **   1   **
+             **       **               / _||||| -:- |||||_ \                **       **
+             **   2   **              |   | \\\  -  /// |   |               **   2   **
+             **       **              | \_|  ''\---/''  |_/ |               **       **
+             **   4   **              \  .-\__  '-'  __/-.  /               **   2   **
+             **       **            ___'. .'  /--.--\  '. .'___             **       **
+             ***********         ."" '<  '.___\_<|>_/___.'  >' "".          ***********
+             ***********        | | :  `- \`.:`\ _ /`:.`/ -`  : | |         ***********
+             ***********        \  \ `-.   \_ __\ /__ _/   .-` /  /         ***********
+             ***********    =====`-.____`.___ \_____/ ___.`____.-`=====     ***********
+             ***********                      `=---=`                       ***********
+             **************************************************************************
+             **************************************************************************
+             ********************                                  ********************
+             ********************             佛祖保佑             ********************
+             ********************        我在校期间BUG不爆发       ********************
+             ********************                                  ********************
+             ********************    此页面除了BUG 没别的东西了    ********************
+             ********************                                  ********************
+             ********************         我努力写了点注释         ********************
+             ********************   便于让你更好的理解有些什么BUG  ********************
+             ********************                                  ********************
+             **************************************************************************
+             ********************                                  ********************
+             ********************   我承认我的变量名写的乱七八糟   ********************
+             ********************   但也不要吐槽，毕竟你用都用了   ********************
+             ********************                                  ********************
+             **************************************************************************
+             
+            夹带私货（涉及个人隐私进行了简单的加密）（原文有5行，全程只使用了一种加密算法（或者说是编码）多次树状合并加密）
+            （由于密文过长，如果你想尝试解密，请将这若干行之间的回车和空格删除）
+            TnpkNVNWWXAbcd1234dPVVEzTjNsTk5Vd3laelZpUjBZMU5GTXlOa3RsYWpWaEswYzFUSEZITnpkNVNnMEtOVXd5UnpWd2FYWTF
+            ZalpKTmxsSFdEVnZZU3MzTjNsTk5WbHRUalZNYVdzMlMwZE5OVXhwTmpWaWNXWTJTMGRODQpAbcd1234UbFp3UkZWcVZuWmhWa2
+            t4VkVoV2VrNVVVWEprUlRGVlZFZDRjVTR5V25Wa2JIQnRZbGRrVEZOSVFuVlRiVXB6WVRCc05tSklTbWhaYlRsMldWZHdkV0pYU
+            1hjTkNsWkhlR3BPVjA1SFZtNUdWMkp0VW5Abcd1234GV2JURnFaVVpzY1ZGdGRGVldWRlpaVlcxNGIxUXhXa2RYYmtKVllsaFNl
+            VlJXV2xOVFJURldXa1U1VjFkSFp6QldWelZxDQpWR3hXTTJWV1NqWldibHBXWlZSbmVGZFdXbXBOVlRWeVlAbcd1234rWkNVRlp
+            HVlhoYVZsWXpUVlprV0dKRVRrOWhNMlI1VmpKd1YxUlhSbGxTVVE
+            */
+        
+        
+            /* 常用函数 */
+            
+            /* 延时函数 */
+            _sleep = (ms) => {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+            // 调用方法：await _sleep(毫秒数)
+            
+            /* 日期格式化 */
+            Date.prototype.format = function(fmt) {
+                var o = {
+                    "M+": this.getMonth() + 1,
+                    "d+": this.getDate(),
+                    "h+": this.getHours(),
+                    "m+": this.getMinutes(),
+                    "s+": this.getSeconds(),
+                    "q+": Math.floor((this.getMonth() + 3) / 3),
+                    "S": this.getMilliseconds()
+                };
+                if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+                for (var k in o) if (new RegExp("(" + k + ")").test(fmt))
+                    fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+                return fmt;
+            }
+            
+            /* 判断字符串是否为空 */
+            function isEmpty(obj){
+                if (typeof obj == "undefined" || obj == null || obj == "") return true;
+                else return false;
+            }
+
+            /* cookies处理 */ /* 已弃用 */
+            function setCookie(cname, cvalue){
+                let d = new Date();
+                let t = d.getTime();
+                d.setTime(t - t % (24 * 60 * 60 * 1000) + (24 * 60 * 60 * 1000));
+                var expires = "expires=" + d.toGMTString();
+                document.cookie = cname + "=" + cvalue + "; " + expires;
+            }
+
+            function delCookie(cname){
+                document.cookie = cname + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            }
+
+            function getCookie(cname){
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for (var i = 0; i < ca.length; i ++) {
+                    var c = ca[i].trim();
+                    if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+                }
+                return "";
+            }
+            
+            var data, sche, delaytime, debugmode;
+            
+        </script><script src="main.js"></script><script>
+        
+            /* 数据处理 */
+            if (isEmpty(delaytime)) delaytime = 3000;
+            if (isEmpty(debugmode)) debugmode = false;
+            
+            // 同学名单与概率
+            name_list = [
+                {"num": 1, "name":"刘豫皖", "val":10}, {"num": 2, "name":"齐欣怡", "val":10}, {"num": 3, "name":"李予心", "val":10},
+                {"num": 4, "name":"杨睿怡", "val":10}, {"num": 5, "name":"吴嘉雯", "val":10}, {"num": 6, "name":"沈筱祎", "val":10},
+                {"num": 7, "name":"张伊容", "val":10}, {"num": 8, "name":"张煜琀", "val":10}, {"num": 9, "name":"张嘉怡", "val":10},
+                {"num":10, "name":"邵亦涵", "val":10}, {"num":11, "name":"邵思晴", "val":10}, {"num":12, "name":"罗怡霖", "val":10},
+                {"num":13, "name":"金品希", "val":10}, {"num":14, "name":"饶昀"  , "val": 0}, {"num":15, "name":"秦黄蕊", "val":10},
+                {"num":16, "name":"桂诗韵", "val":10}, {"num":17, "name":"顾思仪", "val":10}, {"num":18, "name":"黄思绮", "val": 0},
+                {"num":19, "name":"黄语菲", "val":10}, {"num":20, "name":"曹锦秀", "val":10}, {"num":21, "name":"梁彦欣", "val":10},
+                {"num":22, "name":"温璐宁", "val":10}, {"num":23, "name":"卫澜"  , "val":10}, {"num":24, "name":"王屹杨", "val":10},
+                {"num":25, "name":"王皓平", "val": 0}, {"num":26, "name":"邓湛"  , "val":10}, {"num":27, "name":"史炜乐", "val":10},
+                {"num":28, "name":"任思渔", "val":10}, {"num":29, "name":"严睿扬", "val":10}, {"num":30, "name":"李晟淏", "val":10},
+                {"num":31, "name":"佘轶舟", "val":10}, {"num":32, "name":"张乙夏", "val":10}, {"num":33, "name":"张金皓", "val":10},
+                {"num":34, "name":"张既同", "val":10}, {"num":35, "name":"陈麟杰", "val": 0}, {"num":36, "name":"郁佳一", "val":10},
+                {"num":37, "name":"金泰仰", "val":10}, {"num":38, "name":"周津仕", "val":10}, {"num":39, "name":"赵国桓", "val":10},
+                {"num":40, "name":"胡健宇", "val": 0}, {"num":41, "name":"费云帆", "val":10}, {"num":42, "name":"蒋奕铭", "val":10},
+                {"num":43, "name":"魏舒天", "val":10}, {"num":44, "name":"李欣宜", "val":10}, {"num":45, "name":"吕一飞", "val":10}
+            ];
+            
+            // 劳动表
+            if (isEmpty(data)) data = [
+                    ["佘轶舟", "史炜乐", "齐欣怡", "李予心 王屹杨 黄语菲", "卫澜",   "刘豫皖"],
+                    ["任思渔", "张煜琀", "邵思晴", "沈筱祎 吴嘉雯 赵国桓", "邓湛",   "吕一飞"],
+                    ["邵亦涵", "张金皓", "张伊容", "严睿扬 李晟淏 罗怡霖", "张既同", "张嘉怡"],
+                    ["温璐宁", "张乙夏", "金品希", "桂诗韵 郁佳一 金泰仰", "周津仕", "秦黄蕊"],
+                    ["梁彦欣", "顾思仪", "曹锦秀", "李欣宜 费云帆 杨睿怡", "蒋奕铭", "魏舒天"]
+                ];
+            
+            // 课程表
+            if (isEmpty(sche)) sche = [
+                    ["体锻", "信息", "语文", "英语", "数学", "生物", "政治", "化学", "物理"],
+                    ["地理", "数学", "历史", "体专", "体专", "语文", "英语", "拓研", "拓研"],
+                    ["英语", "生物", "艺术", "数学", "数学", "物理", "语文", "心理", "化学"],
+                    ["语文", "历史", "物理", "体育", "政治", "英语", "数学", "劳技", "数测"],
+                    ["地理", "体育", "英语", "语文", "化学", "数学", "信息", "班会"]
+                ];
+                
+            
+            console.log("Data Processing - Finished");
+            
+            /* 懒人模块 */
+            
+            // 简化后面的书写，减少DOM查找消耗
+            var randpeonum  = document.getElementById("randpeonum"),
+                randpeoname = document.getElementById("randpeoname");
+            
+            var dde = document.documentElement;
+            
+            var boxxx = $(".boxxx");
+            
+            var more  = $(".more"),  more1 = $("#more1"),
+                more2 = $("#more2"), more3 = $("#more3");
+            
+            var body = $("#b");
+            
+            // 页面信息getter重构
+            var P = {
+                get h() {return dde.clientHeight},
+                get w() {return dde.clientWidth}
+            }
+            
+            /* 随机选人 */
+            var rand_max = 0, rand_min = 1;
+            
+            // 统计表
+            statistics_list = [];
+            statistics_total = 0;
+            
+            // 计算每人的终值并初始化统计表
+            init_rand = function() {
+                for (let i = 1; i <= name_list.length; i ++) {
+                    rand_max += name_list[i - 1].val;
+                    name_list[i - 1].val = rand_max;
+                    statistics_list[i] = 0;
+                }
+            }
+            
+            // 输出统计表
+            outp_rand = function() {
+                if (debugmode) console.log("已计算 %c" + statistics_total + " %c次，结果如下：" + JSON.stringify(statistics_list), "color: red", "color: black");
+                else console.log("当前随机选出 " + randpeonum.innerHTML + "号 " + randpeoname.innerHTML + " 已被选中%c" + statistics_list[parseInt(randpeonum.innerHTML)] + "%c次", "color:red", "color:black");
+            }
+            
+            // 定位随机数所在的人的区间内
+            find_rand = new Function("p", "for (let i = 0; i <= name_list.length - 1; i ++) if (name_list[i].val >= p) return i + 1;");
+            
+            // 随机数生成
+            var pnum =  12; // 记录上一个数字
+            var ppnum = 12; // 记录上一轮数字
+            
+            rand = function () {
+                let max = rand_max, min = rand_min, num = 12;
+                let first = true;
+                do {
+                    num = find_rand(Math.floor(Math.random() * (max - min + 1) + min));
+                } while (num == pnum);
+                statistics_list[num] ++, statistics_total ++;
+                randpeonum.innerHTML  = num.toString();
+                randpeoname.innerHTML = name_list[num - 1].name;
+                pnum = num;
+            }
+            
+            var delaynum = 0;
+            
+            function numm() {
+                if (delaynum == 0) {
+                    $("#peo").css("opacity", "1");
+                    $("#randpeo").css("opacity", "0");
+                }
+                if (delaynum >= 0) delaynum -= 100;
+            }
+            
+            var inter2 = window.setInterval("numm()", 100);
+            
+            randNumber = function () {
+                delaynum = delaytime; // 建议为100的整数
+                $("#peo").animate({"opacity": "0.3"}, 100);
+                $("#randpeo").css("opacity", "1");
+                var interval2 = window.setInterval("rand()", 10);
+                setTimeout(function() {
+                    window.clearInterval(interval2);
+                    while (pnum == ppnum) rand(), console.log("%c 跳过一次重选", "color: red");
+                    ppnum = pnum;
+                    outp_rand();
+                }, 300);
+            }
+            
+            /* 布局适应 模块 */
+            
+            // 左侧编辑课表栏
+            function changesize1(n) {
+                let temp = $("#more" + n);
+                temp.css("right", (boxxx.width() * n + 20) + "px");
+                temp.css("top", ((P.h - temp.height()) / 2) + "px");
+                temp.css("font-size", "40px");
+            }
+            
+            // 总函数
+            function changesize(initializing = false) {
+                boxxx.css("right", "10px");
+                boxxx.css("top", ((P.h - boxxx.height()) / 2 - 60) + "px");
+                
+                changesize1(1), changesize1(2), changesize1(3);
+                
+                if (! edit_on) more.css({"display": "none", "opacity": "0"});
+                else more.css({"display": "block", "opacity": "1"});
+                
+                body.css("width", P.w + "px");
+                body.css("height", P.h + "px");
+                
+                if (initializing) changesize1(1), changesize1(2), changesize1(3);
+                
+                console.log("function changesize() - Finished changed to (" + P.h + ", " + P.w + ")");
+            }
+            
+            // Prevent the damn window.onload function from being covered by the following ones
+            // 防止这该死的 window.onload 函数给后面声明的垃圾玩意儿覆盖了
+            window.onload = function() {
+                windowonload2();    // 时间、课程表、值日表设置
+                init_rand();        // 初始化统计表
+                if (debugmode) console.log(name_list);
+                                    // 输出预处理后的名单
+                changesize(initializing = true);
+                                    // 界面布局设置
+            }
+            
+            var edit_on = false;
+
+            var pre = new Date(); // "2021/1/13 21:00:00"
+            var day = pre.getDay() - 1;
+            
+            var pid = "", nid = "", apid = "";
+                
+            // 初始化课表 与 记忆化
+            init_sche = function (f = false) {
+                console.log("initing");
+                if ($(".boxxx").html() == "") {
+                    var s = "";
+                    for (var i = 1; i <= 9; i ++) s += '<div id="scheb' + i + '"><div class="schedule" id="sche' + i + '">Undef</div></div>';
+                    $(".boxxx").html(s);
+                    for (var i = 1; i <= 9; i ++)
+                        if (! isEmpty(sche[day][i - 1])) $("#sche" + i).text(sche[day][i - 1]);
+                        else {
+                            $("#sche" + i).css("display", "none");
+                            changesize();
+                        }
+                    localStorage.setItem("domdata", $(".boxxx").html());
+                }
+                if (f) {
+                    str = localStorage.getItem("domdata");
+                    if (isEmpty(str)) {
+                        for (var i = 1; i <= 9; i ++)
+                            if (! isEmpty(sche[day][i - 1])) $("#sche" + i).text(sche[day][i - 1]);
+                            else {
+                                $("#sche" + i).css("display", "none");
+                                changesize();
+                            }
+                        localStorage.setItem("domdata", $(".boxxx").html());
+                    } else $(".boxxx").html(str);
+                } else {
+                    for (var i = 1; i <= 9; i ++)
+                        if (! isEmpty(sche[day][i - 1])) $("#sche" + i).text(sche[day][i - 1]);
+                        else {
+                            $("#sche" + i).css("display", "none");
+                            changesize();
+                        }
+                    localStorage.setItem("domdata", $(".boxxx").html());
+                }
+                console.log("function init_sche() - Finished")
+            }
+            
+            var str;
+            var string2list = new Function("return " + str);
+
+            $(document).ready(function(){
+                var pvis = localStorage.getItem("chtime");
+                if (pvis != null) {
+                    var thi = + new Date(pvis);
+                    var prt = + pre;
+                    if ((Math.floor(prt / (1000 * 60 * 60 * 24)) - Math.floor(thi / (1000 * 60 * 60 * 24)) >= 1)) init_sche(false);
+                }
+                localStorage.setItem("chtime", pre.toGMTString());
+            });
+            
+            var fro;
+
+            reditt = new Function("init_sche(false)");
+            
+            // 工具栏
+            function editt() {
+                edit_on = ! edit_on;
+                if (edit_on) disp = "inline", none = "none";
+                else disp = "none", none = "inline";
+                $("#reditt").css("display", disp);
+                $(".bull").css("display", none); $("#bull").css("display", none);
+                $(".exam").css("display", none); $("#exam").css("display", none);
+                $(".more").css("opacity", "0");
+                if (edit_on) {
+                    $("#editt").text("编辑中");
+                    $("#peo").css("opacity", "0.3");
+                    $(".more").css("display", "block");
+                    $(".more").animate({"opacity": "1"}, 500);
+                } else {
+                    $("#editt").text("编辑课程表");
+                    $("#peo").css("opacity", "1");
+                    $(".more").css("display", "none");
+                }
+                $(".schedule").bind("click", function(ev){
+                    if (edit_on) {
+                        nid = ev.target.id;
+                        console.log(nid);
+                        if (pid != "") {
+                            if (nid[3] == "e" && pid[3] == "e") {
+                                var t = $("#" + pid).text();
+                                $("#" + pid).text($("#" + nid).text());
+                                $("#" + nid).text(t);
+                                pid = ""; nid = "";
+                            } else if (nid[3] == "e" && pid[3] == "m") {
+                                $("#" + nid).text($("#" + pid).text());
+                                pid = ""; nid = "";
+                            }
+                        }
+                        pid = nid;
+                        localStorage.setItem("domdata", $(".boxxx").html());
+                    }
+                });
+            }
+            
+            /* 拖动 模块 */
+            function allowDrop(ev) {
+                if (! edit_on) return;
+                if (ev.target.id == fro.id) return;
+                console.log(ev.target.id[3]);
+                if (ev.target.id[3] == 'm') return;
+                ev.preventDefault();
+            }
+             
+            function drag(ev) {
+                if (! edit_on) return;
+                ev.dataTransfer.setData("Text",ev.target.id);
+                fro = ev.target;
+            }
+             
+            function drop(ev) {
+                if (! edit_on) return;
+                ev.preventDefault();
+                var data = ev.dataTransfer.getData("Text");
+                
+                if (ev.target.id == fro.id) return;
+                console.log(ev.target.id[3]);
+                if (ev.target.id[3] == 'm') return;
+                
+                var tar = ev.target;
+                var tar_text = tar.innerHTML;
+                var tar_id = ev.target.id;
+                //fro = tar.innerHTML;
+                tar.innerHTML = (document.getElementById(data).innerHTML);
+                tar = tar.firstChild;
+                tar.id = tar_id;
+                console.log(fro.id[3]);
+                if (fro.id[3] != 'm') fro.innerHTML = tar_text;
+            }
+            
+            var general_cleaning_mode = false;
+            
+            var FoW_Rwork = false;
+            
+            general_cleaning = function() {
+                $(".other").css("opacity", "1");
+                let t_day = Math.floor(Math.floor(Math.floor((+new Date()) / (1000 * 60 * 60 * 24)) / 7  + 1) % 5);
+                FoW_Rwork = false;
+                for (var i = 0; i <= 5; i ++) $("#work" + i).html(data[t_day][i]);
+                //$("#work0key").text("值日组长：");
+            }
+            
+            init_work = function() {
+                $(".other").css("opacity", "0.5");
+                for (var i = 0; i <= 5; i ++) $("#work" + i).html(data[day][i]);
+                //$("#work0key").text("值日组长：");
+            }
+            
+            //var pppppp = new Date("2022/2/3 13:00:00");
+
+            /* 时间、课程表、值日表 模块 */
+            windowonload2 = function() {
+                $(".blackboard").addClass("active");
+
+                var str = pre.format("yyyy年MM月dd日");
+                $("#dater").text(str);
+
+                init_work();
+                init_sche(true);
+                
+                var now = pre.getTime();
+                now %= 60 * 60 * 24 * 1000;
+                str = pre.format("hh:mm");
+                $("#timer").text(str);
+                
+                setInterval(function() {
+                    pre = new Date();//pppppp;//new Date("2022/2/3 13:00:00");//16200000 18000000
+                    now = pre.getTime();
+                    now %= 60 * 60 * 24 * 1000;
+                    //console.log(pre.getDay());
+                    
+                    str = pre.format("hh:mm");
+                    $("#timer").text(str);
+                    if (now >= 16200000 && now <= 18300000) {
+                        if (! FoW_Rwork) {
+                            if (pre.getDay() == 4) {
+                                general_cleaning();
+                                FoW_Rwork = true;
+                                console.log("大扫除");
+                            } else {
+                                $(".other").css("display", "none");
+                                $(".silent").css("display", "block");
+                            }
+                        }
+                    } else {
+                        if (FoW_Rwork) init_work();
+                        $(".other").css("display", "table-row");
+                        $(".silent").css("display", "none");
+                    }
+                }, 1000);
+
+            }
+        </script>
+    </body>
+</html>
